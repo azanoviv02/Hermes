@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="969.5" y="111.0">com.hermes.infrastructure.dataaccess.spring.HaulRepository</node>
+    <node x="1142.375" y="111.0">com.hermes.infrastructure.dataaccess.spring.UserRepository</node>
+    <node x="220.0" y="222.0">com.hermes.infrastructure.dataaccess.spring.OrderRepositoryImpl</node>
+    <node x="879.5180555555555" y="222.0">com.hermes.infrastructure.dataaccess.spring.HaulRepositoryImpl</node>
+    <node x="1738.625" y="111.0">com.hermes.infrastructure.dataaccess.spring.GenericDaoImpl</node>
+    <node x="417.0" y="222.0">com.hermes.infrastructure.dataaccess.spring.CargoRepositoryImpl</node>
+    <node x="1085.625" y="222.0">com.hermes.infrastructure.dataaccess.spring.UserRepositoryImpl</node>
+    <node x="728.5" y="0.0">com.hermes.infrastructure.dataaccess.spring.GenericRepository</node>
+    <node x="0.0" y="111.0">com.hermes.infrastructure.dataaccess.spring.PlaceRepository</node>
+    <node x="1706.3805555555555" y="0.0">com.hermes.infrastructure.dataaccess.spring.GenericDao</node>
+    <node x="566.5" y="111.0">com.hermes.infrastructure.dataaccess.spring.EmployeeRepository</node>
+    <node x="760.5" y="111.0">com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl</node>
+    <node x="1334.125" y="111.0">com.hermes.infrastructure.dataaccess.spring.VehicleRepository</node>
+    <node x="656.5180555555555" y="222.0">com.hermes.infrastructure.dataaccess.spring.EmployeeRepositoryImpl</node>
+    <node x="190.75" y="111.0">com.hermes.infrastructure.dataaccess.spring.OrderRepository</node>
+    <node x="387.75" y="111.0">com.hermes.infrastructure.dataaccess.spring.CargoRepository</node>
+    <node x="1544.625" y="111.0">com.hermes.infrastructure.dataaccess.spring.MilestoneRepository</node>
+    <node x="1272.625" y="222.0">com.hermes.infrastructure.dataaccess.spring.VehicleRepositoryImpl</node>
+    <node x="1478.625" y="222.0">com.hermes.infrastructure.dataaccess.spring.MilestoneRepositoryImpl</node>
+    <node x="28.0" y="222.0">com.hermes.infrastructure.dataaccess.spring.PlaceRepositoryImpl</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.HaulRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.HaulRepository">
+      <point x="42.0" y="-15.5" />
+      <point x="1005.5180555555555" y="202.0" />
+      <point x="1038.5" y="202.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.EmployeeRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.EmployeeRepository">
+      <point x="-50.75" y="-15.5" />
+      <point x="707.2680555555555" y="162.0" />
+      <point x="653.0" y="162.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.OrderRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.OrderRepository">
+      <point x="-44.25" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.UserRepository" target="com.hermes.infrastructure.dataaccess.spring.GenericRepository">
+      <point x="0.0" y="-15.5" />
+      <point x="1210.875" y="71.0" />
+      <point x="842.6111111111111" y="71.0" />
+      <point x="35.111111111111086" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.VehicleRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl">
+      <point x="-46.5" y="-15.5" />
+      <point x="1319.125" y="182.0" />
+      <point x="913.25" y="182.0" />
+      <point x="58.75" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.GenericRepository">
+      <point x="-47.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.CargoRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.CargoRepository">
+      <point x="-44.25" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.UserRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.UserRepository">
+      <point x="41.75" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.MilestoneRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl">
+      <point x="-51.0" y="-15.5" />
+      <point x="1529.625" y="172.0" />
+      <point x="936.75" y="172.0" />
+      <point x="82.25" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.PlaceRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl">
+      <point x="43.0" y="-15.5" />
+      <point x="157.0" y="172.0" />
+      <point x="772.25" y="172.0" />
+      <point x="-82.25" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.GenericDaoImpl" target="com.hermes.infrastructure.dataaccess.spring.GenericDao">
+      <point x="0.0" y="-15.5" />
+      <point x="1809.625" y="91.0" />
+      <point x="1790.3805555555555" y="91.0" />
+      <point x="28.0" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.UserRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl">
+      <point x="-41.75" y="-15.5" />
+      <point x="1127.375" y="192.0" />
+      <point x="889.75" y="192.0" />
+      <point x="35.25" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.EmployeeRepository" target="com.hermes.infrastructure.dataaccess.spring.GenericRepository">
+      <point x="0.0" y="-15.5" />
+      <point x="653.0" y="91.0" />
+      <point x="789.9444444444443" y="91.0" />
+      <point x="-17.555555555555543" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.MilestoneRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.MilestoneRepository">
+      <point x="51.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.GenericDao">
+      <point x="47.0" y="-15.5" />
+      <point x="901.5" y="91.0" />
+      <point x="1734.3805555555555" y="91.0" />
+      <point x="-28.0" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.HaulRepository" target="com.hermes.infrastructure.dataaccess.spring.GenericRepository">
+      <point x="0.0" y="-15.5" />
+      <point x="1038.5" y="81.0" />
+      <point x="825.0555555555554" y="81.0" />
+      <point x="17.555555555555543" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.EmployeeRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl">
+      <point x="50.75" y="-15.5" />
+      <point x="808.7680555555555" y="202.0" />
+      <point x="842.75" y="202.0" />
+      <point x="-11.75" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.MilestoneRepository" target="com.hermes.infrastructure.dataaccess.spring.GenericRepository">
+      <point x="0.0" y="-15.5" />
+      <point x="1631.625" y="51.0" />
+      <point x="877.7222222222222" y="51.0" />
+      <point x="70.22222222222217" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.VehicleRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.VehicleRepository">
+      <point x="46.5" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.CargoRepository" target="com.hermes.infrastructure.dataaccess.spring.GenericRepository">
+      <point x="0.0" y="-15.5" />
+      <point x="461.25" y="81.0" />
+      <point x="772.3888888888889" y="81.0" />
+      <point x="-35.111111111111086" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.PlaceRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.PlaceRepository">
+      <point x="-43.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.PlaceRepository" target="com.hermes.infrastructure.dataaccess.spring.GenericRepository">
+      <point x="0.0" y="-15.5" />
+      <point x="71.0" y="61.0" />
+      <point x="737.2777777777778" y="61.0" />
+      <point x="-70.22222222222217" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.OrderRepository" target="com.hermes.infrastructure.dataaccess.spring.GenericRepository">
+      <point x="0.0" y="-15.5" />
+      <point x="264.25" y="71.0" />
+      <point x="754.8333333333333" y="71.0" />
+      <point x="-52.66666666666663" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.VehicleRepository" target="com.hermes.infrastructure.dataaccess.spring.GenericRepository">
+      <point x="0.0" y="-15.5" />
+      <point x="1412.125" y="61.0" />
+      <point x="860.1666666666667" y="61.0" />
+      <point x="52.66666666666674" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.CargoRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl">
+      <point x="44.25" y="-15.5" />
+      <point x="549.75" y="192.0" />
+      <point x="819.25" y="192.0" />
+      <point x="-35.25" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.HaulRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl">
+      <point x="-42.0" y="-15.5" />
+      <point x="921.5180555555555" y="202.0" />
+      <point x="866.25" y="202.0" />
+      <point x="11.75" y="15.5" />
+    </edge>
+    <edge source="com.hermes.infrastructure.dataaccess.spring.OrderRepositoryImpl" target="com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl">
+      <point x="44.25" y="-15.5" />
+      <point x="352.75" y="182.0" />
+      <point x="795.75" y="182.0" />
+      <point x="-58.75" y="15.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.45344555497106787" x="940.5" y="126.5" />
+  <SelectedNodes>
+    <node>com.hermes.infrastructure.dataaccess.spring.GenericDao</node>
+    <node>com.hermes.infrastructure.dataaccess.spring.GenericDaoImpl</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

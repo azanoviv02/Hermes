@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">123</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hermes?zeroDateTimeBehavior=convertToNull</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">true</property>
+
+        <mapping class="com.hermes.domain.employees.AbstractEmployee"/>
+        <mapping class="com.hermes.domain.employees.AbstractDriver"/>
+        <mapping class="com.hermes.domain.employees.BasicDriver"/>
+
+        <mapping class="com.hermes.domain.vehicles.AbstractVehicle"/>
+        <mapping class="com.hermes.domain.vehicles.AbstractTruck"/>
+        <mapping class="com.hermes.domain.vehicles.AbstractSolidTruck"/>
+        <mapping class="com.hermes.domain.vehicles.BasicTruck"/>
+
+        <mapping class="com.hermes.domain.cargo.AbstractCargo"/>
+        <mapping class="com.hermes.domain.cargo.AbstractSolidCargo"/>
+        <mapping class="com.hermes.domain.cargo.Box"/>
+
+        <mapping class="com.hermes.domain.places.AbstractPlace"/>
+        <mapping class="com.hermes.domain.places.AbstractBase"/>
+        <mapping class="com.hermes.domain.places.AbstractFix"/>
+        <mapping class="com.hermes.domain.places.BasicClientBase"/>
+        <mapping class="com.hermes.domain.places.BasicCompanyBase"/>
+        <mapping class="com.hermes.domain.places.BasicFix"/>
+
+        <mapping class="com.hermes.domain.hauls.AbstractHaul"/>
+        <mapping class="com.hermes.domain.hauls.BasicHaul"/>
+
+        <mapping class="com.hermes.domain.milestones.AbstractMilestone"/>
+        <mapping class="com.hermes.domain.milestones.StartMilestone"/>
+        <mapping class="com.hermes.domain.milestones.FinishMilestone"/>
+
+        <mapping class="com.hermes.domain.orders.AbstractOrder"/>
+        <mapping class="com.hermes.domain.orders.BasicOrder"/>
+
+        <mapping class="com.hermes.domain.users.AbstractUser"/>
+        <mapping class="com.hermes.domain.users.BasicUser"/>
+        <mapping class="com.hermes.domain.users.RepresentedUser"/>
+
+    </session-factory>
+</hibernate-configuration>
