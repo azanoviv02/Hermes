@@ -1,7 +1,7 @@
 package com.hermes.application;
 
 import com.hermes.domain.users.AbstractUser;
-import com.hermes.infrastructure.dataaccess.spring.UserRepository;
+import com.hermes.infrastructure.dataaccess.repositories.UserRepository;
 
 import java.util.List;
 

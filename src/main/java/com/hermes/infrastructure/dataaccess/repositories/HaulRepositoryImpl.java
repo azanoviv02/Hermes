@@ -1,4 +1,4 @@
-package com.hermes.infrastructure.dataaccess.spring;
+package com.hermes.infrastructure.dataaccess.repositories;
 
 import com.hermes.domain.hauls.AbstractHaul;
 

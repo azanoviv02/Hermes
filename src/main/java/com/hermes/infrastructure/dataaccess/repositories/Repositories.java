@@ -19,56 +19,56 @@ public final class Repositories {
 
     public static CargoRepository getCargoRepository(){
         if(storedCargoRepository == null){
-            storedCargoRepository = new CargoRepository();
+            storedCargoRepository = new CargoRepositoryImpl();
         }
         return storedCargoRepository;
     }
 
     public static EmployeeRepository getEmployeeRepository(){
         if(storedEmployeeRepository == null){
-            storedEmployeeRepository = new EmployeeRepository();
+            storedEmployeeRepository = new EmployeeRepositoryImpl();
         }
         return storedEmployeeRepository;
     }
 
     public static HaulRepository getHaulRepository(){
         if(storedHaulRepository == null){
-            storedHaulRepository = new HaulRepository();
+            storedHaulRepository = new HaulRepositoryImpl();
         }
         return storedHaulRepository;
     }
 
     public static MilestoneRepository getMilestoneRepository(){
         if(storedMilestoneRepository == null){
-            storedMilestoneRepository = new MilestoneRepository();
+            storedMilestoneRepository = new MilestoneRepositoryImpl();
         }
         return storedMilestoneRepository;
     }
 
     public static OrderRepository getOrderRepository(){
         if(storedOrderRepository == null){
-            storedOrderRepository = new OrderRepository();
+            storedOrderRepository = new OrderRepositoryImpl();
         }
         return storedOrderRepository;
     }
 
     public static PlaceRepository getPlaceRepository(){
         if(storedPlaceRepository == null){
-            storedPlaceRepository = new PlaceRepository();
+            storedPlaceRepository = new PlaceRepositoryImpl();
         }
         return storedPlaceRepository;
     }
 
     public static UserRepository getUserRepository(){
         if(storedUserRepository == null){
-            storedUserRepository = new UserRepository();
+            storedUserRepository = new UserRepositoryImpl();
         }
         return storedUserRepository;
     }
 
     public static VehicleRepository getVehicleRepository(){
         if(storedVehicleRepository == null){
-            storedVehicleRepository = new VehicleRepository();
+            storedVehicleRepository = new VehicleRepositoryImpl();
         }
         return storedVehicleRepository;
     }

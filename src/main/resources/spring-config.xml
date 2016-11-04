@@ -46,15 +46,15 @@
 
     <!-- //////////////////////////////////////////////////////////////////////////////////// -->
 
-    <bean id="genericDao" class="com.hermes.infrastructure.dataaccess.spring.GenericDaoImpl">
+    <bean id="genericDao" class="com.hermes.infrastructure.dataaccess.repositories.GenericDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 
-    <bean id="genericRepository" class="com.hermes.infrastructure.dataaccess.spring.GenericRepositoryImpl">
+    <bean id="genericRepository" class="com.hermes.infrastructure.dataaccess.repositories.GenericRepositoryImpl">
         <property name="genericDao" ref="genericDao"></property>
     </bean>
 
-    <bean id="userDao" class="com.hermes.infrastructure.dataaccess.spring.UserDaoImpl" parent="genericDao">
+    <bean id="userDao" class="com.hermes.infrastructure.dataaccess.repositories.UserDaoImpl" parent="genericDao">
     </bean>
 
 
