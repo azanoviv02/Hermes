@@ -13,21 +13,18 @@ import java.util.UUID;
 
 public class GenericDaoImpl<T extends AbstractPersistentObject> implements GenericDao<T> {
 
-    protected Class<? extends T> daoType;
-    private SessionFactory sessionFactory;
+    protected final Class<? extends T> daoType;
+    private final SessionFactory sessionFactory;
 
-    public GenericDaoImpl() {
+    public GenericDaoImpl(SessionFactory sessionFactory) {
         Type t = getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;
         daoType = (Class) pt.getActualTypeArguments()[0];
+        this.sessionFactory = sessionFactory;
     }
 
     public SessionFactory getSessionFactory() {
         return sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
     }
 
     public Session currentSession() {

@@ -15,9 +15,6 @@ public class GenericRepositoryImpl<T extends AbstractPersistentObject> implement
 
     private GenericDao<T> dao;
 
-    public GenericRepositoryImpl() {
-    }
-
     public GenericRepositoryImpl(GenericDao<T> dao) {
         this.dao = dao;
     }

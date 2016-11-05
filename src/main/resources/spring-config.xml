@@ -46,17 +46,53 @@
 
     <!-- //////////////////////////////////////////////////////////////////////////////////// -->
 
-    <bean id="genericDao" class="com.hermes.infrastructure.dataaccess.repositories.GenericDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"></property>
+    <bean id="genericDao"
+          class="com.hermes.infrastructure.dataaccess.repositories.GenericDaoImpl">
+        <constructor-arg ref="sessionFactory"/>
     </bean>
 
-    <bean id="genericRepository" class="com.hermes.infrastructure.dataaccess.repositories.GenericRepositoryImpl">
-        <property name="genericDao" ref="genericDao"></property>
+    <bean id="genericRepository"
+          class="com.hermes.infrastructure.dataaccess.repositories.GenericRepositoryImpl">
+        <constructor-arg ref="genericDao"/>
     </bean>
 
-    <bean id="userDao" class="com.hermes.infrastructure.dataaccess.repositories.UserDaoImpl" parent="genericDao">
+    <bean id="cargoRepository"
+          class="com.hermes.infrastructure.dataaccess.repositories.CargoRepositoryImpl"
+          parent="genericRepository">
     </bean>
 
+    <bean id="orderRepository"
+          class="com.hermes.infrastructure.dataaccess.repositories.OrderRepositoryImpl"
+          parent="genericRepository">
+    </bean>
 
+    <bean id="haulRepository"
+          class="com.hermes.infrastructure.dataaccess.repositories.HaulRepositoryImpl"
+          parent="genericRepository">
+    </bean>
 
+    <bean id="employeeRepository"
+          class="com.hermes.infrastructure.dataaccess.repositories.EmployeeRepositoryImpl"
+          parent="genericRepository">
+    </bean>
+
+    <bean id="vehicleRepository"
+          class="com.hermes.infrastructure.dataaccess.repositories.VehicleRepositoryImpl"
+          parent="genericRepository">
+    </bean>
+
+    <bean id="milestoneRepository"
+          class="com.hermes.infrastructure.dataaccess.repositories.MilestoneRepositoryImpl"
+          parent="genericRepository">
+    </bean>
+
+    <bean id="placeRepository"
+          class="com.hermes.infrastructure.dataaccess.repositories.PlaceRepositoryImpl"
+          parent="genericRepository">
+    </bean>
+
+    <bean id="userRepository"
+          class="com.hermes.infrastructure.dataaccess.repositories.UserRepositoryImpl"
+          parent="genericRepository">
+    </bean>
 </beans>

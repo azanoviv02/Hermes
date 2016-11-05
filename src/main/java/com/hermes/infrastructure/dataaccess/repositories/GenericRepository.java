@@ -13,6 +13,7 @@ import java.util.UUID;
  * Created by ivan on 04.11.16.
  */
 public interface GenericRepository<T extends AbstractPersistentObject> {
+
     GenericDao<T> getGenericDao();
 
     void setGenericDao(GenericDao<T> dao);
