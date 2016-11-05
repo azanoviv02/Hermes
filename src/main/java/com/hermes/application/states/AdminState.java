@@ -3,7 +3,7 @@ package com.hermes.application.states;
 import com.hermes.application.ConsoleView;
 import com.hermes.domain.users.AbstractUser;
 import com.hermes.domain.users.Role;
-import com.hermes.domain.users.UserFactory;
+import com.hermes.domain.users.UserFactoryImpl;
 import com.hermes.infrastructure.dataaccess.repositories.Repositories;
 import com.hermes.infrastructure.dataaccess.specifications.users.UserWhich;
 import com.hermes.userinterface.Controller;
@@ -266,7 +266,7 @@ public class AdminState extends AbstractUserState {
             throw new IllegalStateException();
         }
 
-        repository.getUserRepository().add(UserFactory.createUser(login, password, name, role));
+        repository.getUserRepository().add(UserFactoryImpl.createUser(login, password, name, role));
         consoleView.println("New user was successfully created!");
     }
 

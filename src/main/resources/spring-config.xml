@@ -168,6 +168,16 @@
 
     <!-- //////////////////////////////////////////////////////////////////////////////////// -->
 
+    <bean id="userFactory"
+          class="com.hermes.infrastructure.dataaccess.repositories.UserRepositoryImpl"
+          parent="genericRepository">
+        <constructor-arg type = "java.lang.Class">
+            <value>com.hermes.domain.users.AbstractUser</value>
+        </constructor-arg>
+    </bean>
+
+    <!-- //////////////////////////////////////////////////////////////////////////////////// -->
+
     <bean id="repositories"
           class="com.hermes.infrastructure.dataaccess.repositories.Repositories">
         <constructor-arg ref="cargoRepository"/>
