@@ -38,54 +38,59 @@
 
     <!-- //////////////////////////////////////////////////////////////////////////////////// -->
 
-    <bean id="genericDao"
-          class="com.hermes.infrastructure.dataaccess.repositories.GenericDaoImpl">
+    <!-- <bean id="genericDao"
+          abstract="true"
+          class="com.hermes.infrastructure.dataaccess.repositories.GenericDao">
         <constructor-arg ref="sessionFactory"/>
-    </bean>
+    </bean> -->
 
     <bean id="genericRepository"
+          abstract="true"
           class="com.hermes.infrastructure.dataaccess.repositories.GenericRepositoryImpl">
-        <constructor-arg ref="genericDao"/>
+        <constructor-arg ref="sessionFactory"/>
     </bean>
 
     <bean id="cargoRepository"
           class="com.hermes.infrastructure.dataaccess.repositories.CargoRepositoryImpl"
           parent="genericRepository">
+        <constructor-arg type = "java.lang.Class">
+            <value>com.hermes.domain.cargo.AbstractCargo</value>
+        </constructor-arg>
     </bean>
 
     <bean id="orderRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.OrderRepositoryImpl"
-          parent="genericRepository">
+          class="com.hermes.infrastructure.dataaccess.repositories.OrderRepositoryImpl">
+        <constructor-arg ref="sessionFactory"/>
     </bean>
 
     <bean id="haulRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.HaulRepositoryImpl"
-          parent="genericRepository">
+          class="com.hermes.infrastructure.dataaccess.repositories.HaulRepositoryImpl">
+        <constructor-arg ref="sessionFactory"/>
     </bean>
 
     <bean id="employeeRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.EmployeeRepositoryImpl"
-          parent="genericRepository">
+          class="com.hermes.infrastructure.dataaccess.repositories.EmployeeRepositoryImpl">
+        <constructor-arg ref="sessionFactory"/>
     </bean>
 
     <bean id="vehicleRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.VehicleRepositoryImpl"
-          parent="genericRepository">
+          class="com.hermes.infrastructure.dataaccess.repositories.VehicleRepositoryImpl">
+        <constructor-arg ref="sessionFactory"/>
     </bean>
 
     <bean id="milestoneRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.MilestoneRepositoryImpl"
-          parent="genericRepository">
+          class="com.hermes.infrastructure.dataaccess.repositories.MilestoneRepositoryImpl">
+        <constructor-arg ref="sessionFactory"/>
     </bean>
 
     <bean id="placeRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.PlaceRepositoryImpl"
-          parent="genericRepository">
+          class="com.hermes.infrastructure.dataaccess.repositories.PlaceRepositoryImpl">
+        <constructor-arg ref="sessionFactory"/>
     </bean>
 
     <bean id="userRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.UserRepositoryImpl"
-          parent="genericRepository">
+          class="com.hermes.infrastructure.dataaccess.repositories.UserRepositoryImpl">
+        <constructor-arg ref="sessionFactory"/>
     </bean>
 
     <!-- //////////////////////////////////////////////////////////////////////////////////// -->

@@ -14,10 +14,6 @@ import java.util.UUID;
  */
 public interface GenericRepository<T extends AbstractPersistentObject> {
 
-    GenericDao<T> getGenericDao();
-
-    void setGenericDao(GenericDao<T> dao);
-
     @Transactional(propagation = Propagation.REQUIRED)
     void add(T entity);
 

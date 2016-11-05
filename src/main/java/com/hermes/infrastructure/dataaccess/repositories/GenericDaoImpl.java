@@ -6,8 +6,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,15 +14,9 @@ public class GenericDaoImpl<T extends AbstractPersistentObject> implements Gener
     protected final Class<? extends T> daoType;
     private final SessionFactory sessionFactory;
 
-    public GenericDaoImpl(SessionFactory sessionFactory) {
-        Type t = getClass().getGenericSuperclass();
-        ParameterizedType pt = (ParameterizedType) t;
-        daoType = (Class) pt.getActualTypeArguments()[0];
+    public GenericDaoImpl(Class<? extends T> daoType, SessionFactory sessionFactory) {
+        this.daoType = daoType;
         this.sessionFactory = sessionFactory;
-    }
-
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
     }
 
     public Session currentSession() {

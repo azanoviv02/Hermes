@@ -2,6 +2,7 @@ package com.hermes.infrastructure.dataaccess.repositories;
 
 import com.hermes.domain.AbstractPersistentObject;
 import com.hermes.infrastructure.dataaccess.specifications.Specification;
+import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,22 +12,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-public class GenericRepositoryImpl<T extends AbstractPersistentObject> implements GenericRepository<T>{
+public abstract class GenericRepositoryImpl<T extends AbstractPersistentObject> implements GenericRepository<T>{
 
-    private GenericDao<T> dao;
+    private final GenericDao<T> dao;
 
-    public GenericRepositoryImpl(GenericDao<T> dao) {
-        this.dao = dao;
-    }
-
-    @Override
-    public GenericDao<T> getGenericDao() {
-        return dao;
-    }
-
-    @Override
-    public void setGenericDao(GenericDao<T> dao) {
-        this.dao = dao;
+    public GenericRepositoryImpl(Class<? extends T> daoType, SessionFactory sessionFactory) {
+        this.dao = new GenericDaoImpl<T>(daoType, sessionFactory);
     }
 
     @Override
