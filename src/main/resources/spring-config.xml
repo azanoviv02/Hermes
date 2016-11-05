@@ -36,14 +36,6 @@
     <bean id="persistenceExceptionTranslationPostProcessor"
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
-
-    <!-- //////////////////////////////////////////////////////////////////////////////////// -->
-
-    <bean id="testMain" class="com.hermes.TestMain">
-        <property name="sessionFactory" ref="sessionFactory"></property>
-        <property name="userDao" ref="userDao"></property>
-    </bean>
-
     <!-- //////////////////////////////////////////////////////////////////////////////////// -->
 
     <bean id="genericDao"
@@ -95,4 +87,19 @@
           class="com.hermes.infrastructure.dataaccess.repositories.UserRepositoryImpl"
           parent="genericRepository">
     </bean>
+
+    <!-- //////////////////////////////////////////////////////////////////////////////////// -->
+
+    <bean id="repositories"
+          class="com.hermes.infrastructure.dataaccess.repositories.Repositories">
+        <constructor-arg ref="cargoRepository"/>
+        <constructor-arg ref="employeeRepository"/>
+        <constructor-arg ref="haulRepository"/>
+        <constructor-arg ref="milestoneRepository"/>
+        <constructor-arg ref="orderRepository"/>
+        <constructor-arg ref="placeRepository"/>
+        <constructor-arg ref="vehicleRepository"/>
+        <constructor-arg ref="userRepository"/>
+    </bean>
+
 </beans>

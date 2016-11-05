@@ -19,13 +19,13 @@ public interface GenericRepository<T extends AbstractPersistentObject> {
     void setGenericDao(GenericDao<T> dao);
 
     @Transactional(propagation = Propagation.REQUIRED)
-    abstract void add(T entity);
+    void add(T entity);
 
     @Transactional(propagation = Propagation.REQUIRED)
-    abstract void addAll(Collection<T> allEntities);
+    void addAll(Collection<T> allEntities);
 
     @Transactional(propagation = Propagation.REQUIRED)
-    abstract void saveOrUpdate(T entity);
+    void saveOrUpdate(T entity);
 
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     T getOne(Specification<T>... specification);

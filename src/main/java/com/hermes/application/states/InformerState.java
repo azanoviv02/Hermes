@@ -7,6 +7,7 @@ import com.hermes.domain.places.PlaceFactory;
 import com.hermes.domain.users.AbstractUser;
 import com.hermes.infrastructure.dataaccess.repositories.Repositories;
 import com.hermes.userinterface.Controller;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by ivan on 02.11.16.
@@ -77,7 +78,10 @@ public class InformerState extends AbstractUserState {
             }
         }
 
-        Repositories.getPlaceRepository().add(place);
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        Repositories repository = context.getBean(Repositories.class);
+
+        repository.getPlaceRepository().add(place);
         consoleView.println("New place was created successfuly");
     }
 

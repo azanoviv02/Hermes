@@ -6,6 +6,7 @@ import com.hermes.domain.orders.OrderBuilder;
 import com.hermes.domain.users.AbstractUser;
 import com.hermes.infrastructure.dataaccess.repositories.Repositories;
 import com.hermes.userinterface.Controller;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -52,7 +53,11 @@ public class ManagerState extends AbstractUserState {
         ConsoleView consoleView = controller.getConsoleView();
 
         consoleView.println("All currently active orders:");
-        List<? extends AbstractOrder> allOrders = Repositories.getOrderRepository().getAll();
+
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        Repositories repository = context.getBean(Repositories.class);
+
+        List<? extends AbstractOrder> allOrders = repository.getOrderRepository().getAll();
         for(AbstractOrder order : allOrders){
             printOrderInfo(controller, order);
         }
@@ -63,7 +68,7 @@ public class ManagerState extends AbstractUserState {
 
         consoleView.println("Not ready yet!");
 //        consoleView.println("All currently active orders:");
-//        List<? extends Order> allOrders = Repositories.getOrderRepository().getAll();
+//        List<? extends Order> allOrders = repository.getOrderRepository().getAll();
 //        for(Order order : allOrders){
 //            printOrderInfo(controller, order);
 //        }
@@ -119,7 +124,10 @@ public class ManagerState extends AbstractUserState {
             }
         }
 
-        Repositories.getOrderRepository().add(ob.getOrder());
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        Repositories repository = context.getBean(Repositories.class);
+
+        repository.getOrderRepository().add(ob.getOrder());
         consoleView.println("New order was successfuly added!");
     }
 

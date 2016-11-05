@@ -5,6 +5,7 @@ import com.hermes.domain.users.InvalidPasswordException;
 import com.hermes.domain.users.RepresentedUser;
 import com.hermes.infrastructure.dataaccess.repositories.Repositories;
 import com.hermes.infrastructure.dataaccess.specifications.users.UserWhich;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.persistence.NoResultException;
 
@@ -15,7 +16,11 @@ class UserStateFactory {
 
     static AbstractUserState createUserState(String login, String password) throws NoSuchLoginException, InvalidPasswordException{
         try {
-            AbstractUser user = Repositories.getUserRepository().getOne(UserWhich.hasLogin(login));
+
+            ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+            Repositories repository = context.getBean(Repositories.class);
+
+            AbstractUser user = repository.getUserRepository().getOne(UserWhich.hasLogin(login));
             user.checkPassword(password);
             switch(user.getRole()){
                 case ADMIN:

@@ -2,74 +2,62 @@ package com.hermes.infrastructure.dataaccess.repositories;
 
 public final class Repositories {
 
-    private static CargoRepository storedCargoRepository;
-    private static EmployeeRepository storedEmployeeRepository;
-    private static HaulRepository storedHaulRepository;
-    private static MilestoneRepository storedMilestoneRepository;
-    private static OrderRepository storedOrderRepository;
-    private static PlaceRepository storedPlaceRepository;
-    private static VehicleRepository storedVehicleRepository;
-    private static UserRepository storedUserRepository;
+    private CargoRepository storedCargoRepository;
+    private EmployeeRepository storedEmployeeRepository;
+    private HaulRepository storedHaulRepository;
+    private MilestoneRepository storedMilestoneRepository;
+    private OrderRepository storedOrderRepository;
+    private PlaceRepository storedPlaceRepository;
+    private VehicleRepository storedVehicleRepository;
+    private UserRepository storedUserRepository;
 
-//    private static GenericRepository<AbstractPersistentObject> universalRepository;
-//
-//    static {
-//        universalRepository = new GenericRepository<>(AbstractPersistentObject.class);
-//    }
+    public Repositories(CargoRepository storedCargoRepository,
+                        EmployeeRepository storedEmployeeRepository,
+                        HaulRepository storedHaulRepository,
+                        MilestoneRepository storedMilestoneRepository,
+                        OrderRepository storedOrderRepository,
+                        PlaceRepository storedPlaceRepository,
+                        VehicleRepository storedVehicleRepository,
+                        UserRepository storedUserRepository) {
+        this.storedCargoRepository = storedCargoRepository;
+        this.storedEmployeeRepository = storedEmployeeRepository;
+        this.storedHaulRepository = storedHaulRepository;
+        this.storedMilestoneRepository = storedMilestoneRepository;
+        this.storedOrderRepository = storedOrderRepository;
+        this.storedPlaceRepository = storedPlaceRepository;
+        this.storedVehicleRepository = storedVehicleRepository;
+        this.storedUserRepository = storedUserRepository;
+    }
 
-    public static CargoRepository getCargoRepository(){
-        if(storedCargoRepository == null){
-            storedCargoRepository = new CargoRepositoryImpl();
-        }
+    public CargoRepository getCargoRepository(){
         return storedCargoRepository;
     }
 
-    public static EmployeeRepository getEmployeeRepository(){
-        if(storedEmployeeRepository == null){
-            storedEmployeeRepository = new EmployeeRepositoryImpl();
-        }
+    public EmployeeRepository getEmployeeRepository(){
         return storedEmployeeRepository;
     }
 
-    public static HaulRepository getHaulRepository(){
-        if(storedHaulRepository == null){
-            storedHaulRepository = new HaulRepositoryImpl();
-        }
+    public HaulRepository getHaulRepository(){
         return storedHaulRepository;
     }
 
-    public static MilestoneRepository getMilestoneRepository(){
-        if(storedMilestoneRepository == null){
-            storedMilestoneRepository = new MilestoneRepositoryImpl();
-        }
+    public MilestoneRepository getMilestoneRepository(){
         return storedMilestoneRepository;
     }
 
-    public static OrderRepository getOrderRepository(){
-        if(storedOrderRepository == null){
-            storedOrderRepository = new OrderRepositoryImpl();
-        }
+    public OrderRepository getOrderRepository(){
         return storedOrderRepository;
     }
 
-    public static PlaceRepository getPlaceRepository(){
-        if(storedPlaceRepository == null){
-            storedPlaceRepository = new PlaceRepositoryImpl();
-        }
+    public PlaceRepository getPlaceRepository(){
         return storedPlaceRepository;
     }
 
-    public static UserRepository getUserRepository(){
-        if(storedUserRepository == null){
-            storedUserRepository = new UserRepositoryImpl();
-        }
+    public UserRepository getUserRepository(){
         return storedUserRepository;
     }
 
-    public static VehicleRepository getVehicleRepository(){
-        if(storedVehicleRepository == null){
-            storedVehicleRepository = new VehicleRepositoryImpl();
-        }
+    public VehicleRepository getVehicleRepository(){
         return storedVehicleRepository;
     }
 }

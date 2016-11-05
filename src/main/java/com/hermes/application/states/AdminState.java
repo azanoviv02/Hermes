@@ -7,6 +7,7 @@ import com.hermes.domain.users.UserFactory;
 import com.hermes.infrastructure.dataaccess.repositories.Repositories;
 import com.hermes.infrastructure.dataaccess.specifications.users.UserWhich;
 import com.hermes.userinterface.Controller;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
@@ -73,7 +74,10 @@ public class AdminState extends AbstractUserState {
     private void printAllUsers(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allUsers = Repositories.getUserRepository().getAll();
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        Repositories repository = context.getBean(Repositories.class);
+
+        List<? extends AbstractUser> allUsers = repository.getUserRepository().getAll();
 
         if(allUsers.isEmpty()){
             throw new IllegalStateException("There should be at least one admin account!");
@@ -91,7 +95,10 @@ public class AdminState extends AbstractUserState {
     private void printAllAdmins(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allAdmins = Repositories.getUserRepository().getEvery(UserWhich.isAdmin());
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        Repositories repository = context.getBean(Repositories.class);
+
+        List<? extends AbstractUser> allAdmins = repository.getUserRepository().getEvery(UserWhich.isAdmin());
 
         if(allAdmins.isEmpty()){
             throw new IllegalStateException("There should be at least one admin account!");
@@ -109,7 +116,10 @@ public class AdminState extends AbstractUserState {
     private void printAllDrivers(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allDrivers = Repositories.getUserRepository().getEvery(UserWhich.isDriver());
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        Repositories repository = context.getBean(Repositories.class);
+
+        List<? extends AbstractUser> allDrivers = repository.getUserRepository().getEvery(UserWhich.isDriver());
 
         if(allDrivers.isEmpty()){
             consoleView.println("No drivers have been registered yet :(");
@@ -124,7 +134,10 @@ public class AdminState extends AbstractUserState {
     private void printAllPlanners(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allPlanners = Repositories.getUserRepository().getEvery(UserWhich.isPlanner());
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        Repositories repository = context.getBean(Repositories.class);
+
+        List<? extends AbstractUser> allPlanners = repository.getUserRepository().getEvery(UserWhich.isPlanner());
 
         if(allPlanners.isEmpty()){
             consoleView.println("No drivers have been registered yet :(");
@@ -139,7 +152,10 @@ public class AdminState extends AbstractUserState {
     private void printAllManagers(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allManagers = Repositories.getUserRepository().getEvery(UserWhich.isManager());
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        Repositories repository = context.getBean(Repositories.class);
+
+        List<? extends AbstractUser> allManagers = repository.getUserRepository().getEvery(UserWhich.isManager());
 
         if(allManagers.isEmpty()){
             consoleView.println("No managers have been registered yet :(");
@@ -154,7 +170,10 @@ public class AdminState extends AbstractUserState {
     private void printAllInformers(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allInformers = Repositories.getUserRepository().getEvery(UserWhich.isInformer());
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        Repositories repository = context.getBean(Repositories.class);
+
+        List<? extends AbstractUser> allInformers = repository.getUserRepository().getEvery(UserWhich.isInformer());
 
         if(allInformers.isEmpty()){
             consoleView.println("No informers have been registered yet :(");
@@ -211,7 +230,10 @@ public class AdminState extends AbstractUserState {
             }
         }
 
-        List<? extends AbstractUser> allUsers = Repositories.getUserRepository().getAll();
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        Repositories repository = context.getBean(Repositories.class);
+
+        List<? extends AbstractUser> allUsers = repository.getUserRepository().getAll();
 
         outer:
         while(true){
@@ -244,7 +266,7 @@ public class AdminState extends AbstractUserState {
             throw new IllegalStateException();
         }
 
-        Repositories.getUserRepository().add(UserFactory.createUser(login, password, name, role));
+        repository.getUserRepository().add(UserFactory.createUser(login, password, name, role));
         consoleView.println("New user was successfully created!");
     }
 
