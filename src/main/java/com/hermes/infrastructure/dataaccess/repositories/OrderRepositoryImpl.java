@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
  * Created by ivan on 05.11.16.
  */
 public class OrderRepositoryImpl extends GenericRepositoryImpl<AbstractOrder> implements OrderRepository {
-    public OrderRepositoryImpl(SessionFactory sessionFactory) {
-        super(AbstractOrder.class, sessionFactory);
+    public OrderRepositoryImpl(Class<? extends AbstractOrder> daoType, SessionFactory sessionFactory) {
+        super(daoType, sessionFactory);
     }
 }

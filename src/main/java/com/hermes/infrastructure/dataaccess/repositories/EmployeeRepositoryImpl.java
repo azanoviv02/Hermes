@@ -7,8 +7,8 @@ import org.hibernate.SessionFactory;
  * Created by ivan on 05.11.16.
  */
 public class EmployeeRepositoryImpl extends GenericRepositoryImpl<AbstractEmployee> implements EmployeeRepository {
-    public EmployeeRepositoryImpl(SessionFactory sessionFactory) {
-        super(AbstractEmployee.class, sessionFactory);
+    public EmployeeRepositoryImpl(Class<? extends AbstractEmployee> daoType, SessionFactory sessionFactory) {
+        super(daoType, sessionFactory);
     }
 }
 

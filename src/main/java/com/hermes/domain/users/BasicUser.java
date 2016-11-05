@@ -3,9 +3,6 @@ package com.hermes.domain.users;
 import javax.persistence.*;
 
 @Entity
-@Table(name="USERS")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="ENTITY_TYPE", discriminatorType=DiscriminatorType.STRING, length = 20)
 @DiscriminatorValue("BASIC_USER")
 public class BasicUser extends AbstractUser {
 

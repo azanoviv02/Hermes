@@ -5,7 +5,7 @@ import com.hermes.domain.milestones.AbstractMilestone;
 import org.hibernate.SessionFactory;
 
 public class MilestoneRepositoryImpl extends GenericRepositoryImpl<AbstractMilestone> implements MilestoneRepository {
-    public MilestoneRepositoryImpl(SessionFactory sessionFactory) {
-        super(AbstractMilestone.class, sessionFactory);
+    public MilestoneRepositoryImpl(Class<? extends AbstractMilestone> daoType, SessionFactory sessionFactory) {
+        super(daoType, sessionFactory);
     }
 }

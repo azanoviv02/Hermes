@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
  * Created by ivan on 05.11.16.
  */
 public class HaulRepositoryImpl extends GenericRepositoryImpl<AbstractHaul> implements HaulRepository {
-    public HaulRepositoryImpl(SessionFactory sessionFactory) {
-        super(AbstractHaul.class, sessionFactory);
+    public HaulRepositoryImpl(Class<? extends AbstractHaul> daoType, SessionFactory sessionFactory) {
+        super(daoType, sessionFactory);
     }
 }

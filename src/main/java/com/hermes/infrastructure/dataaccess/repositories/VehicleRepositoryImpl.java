@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
  * Created by ivan on 05.11.16.
  */
 public class VehicleRepositoryImpl extends GenericRepositoryImpl<AbstractVehicle> implements VehicleRepository {
-    public VehicleRepositoryImpl(SessionFactory sessionFactory) {
-        super(AbstractVehicle.class, sessionFactory);
+    public VehicleRepositoryImpl(Class<? extends AbstractVehicle> daoType, SessionFactory sessionFactory) {
+        super(daoType, sessionFactory);
     }
 }
