@@ -1,7 +1,6 @@
 package com.hermes.application.states;
 
-import com.hermes.application.ConsoleView;
-import com.hermes.domain.users.AbstractUser;
+import com.hermes.userinterface.ConsoleView;
 import com.hermes.userinterface.Controller;
 
 /**
@@ -9,8 +8,7 @@ import com.hermes.userinterface.Controller;
  */
 public class PlannerState extends AbstractUserState {
 
-    PlannerState(AbstractUser currentUser) {
-        super(currentUser);
+    public PlannerState() {
     }
 
     public void analyseCommands(Controller controller){
@@ -28,7 +26,7 @@ public class PlannerState extends AbstractUserState {
                 }
         }
 
-        analyseCommandsUser(controller, command);
+        analyseCommandsUserCommon(controller, command);
     }
 
     void printHelp(Controller controller){

@@ -1,21 +1,23 @@
 package com.hermes.application.states;
 
-import com.hermes.application.ConsoleView;
 import com.hermes.domain.places.AbstractBase;
 import com.hermes.domain.places.AbstractPlace;
 import com.hermes.domain.places.PlaceFactory;
-import com.hermes.domain.users.AbstractUser;
-import com.hermes.infrastructure.dataaccess.repositories.Repositories;
+import com.hermes.infrastructure.dataaccess.repositories.PlaceRepository;
+import com.hermes.userinterface.ConsoleView;
 import com.hermes.userinterface.Controller;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by ivan on 02.11.16.
  */
 public class InformerState extends AbstractUserState {
 
-    InformerState(AbstractUser currentUser) {
-        super(currentUser);
+    private final PlaceRepository placeRepository;
+    private final PlaceFactory placeFactory;
+
+    public InformerState(PlaceRepository placeRepository, PlaceFactory placeFactory) {
+        this.placeRepository = placeRepository;
+        this.placeFactory = placeFactory;
     }
 
     public void analyseCommands(Controller controller){
@@ -34,7 +36,7 @@ public class InformerState extends AbstractUserState {
                 }
         }
 
-        analyseCommandsUser(controller, command);
+        analyseCommandsUserCommon(controller, command);
     }
 
     void printHelp(Controller controller){
@@ -71,17 +73,14 @@ public class InformerState extends AbstractUserState {
                     place = createBase(controller, placeName);
                     break outer;
                 case "fix":
-                    place = PlaceFactory.createBasicFix(placeName);
+                    place = this.placeFactory.createBasicFix(placeName);
                     break outer;
                 default:
                     consoleView.println("Incorrect answer. Please, write \"base\" or \"fix\"");
             }
         }
 
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-        Repositories repository = context.getBean(Repositories.class);
-
-        repository.getPlaceRepository().add(place);
+        this.placeRepository.add(place);
         consoleView.println("New place was created successfuly");
     }
 
@@ -92,9 +91,9 @@ public class InformerState extends AbstractUserState {
             String choice = consoleView.readWholeLine();
             switch(choice.toLowerCase()) {
                 case "company":
-                    return PlaceFactory.createBasicCompanyBase(placeName);
+                    return this.placeFactory.createBasicCompanyBase(placeName);
                 case "client":
-                    return PlaceFactory.createBasicClientBase(placeName);
+                    return this.placeFactory.createBasicClientBase(placeName);
                 default:
                     consoleView.println("Incorrect answer. Please, write \"company\" or \"client\"");
             }

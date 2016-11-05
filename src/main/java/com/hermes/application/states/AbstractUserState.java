@@ -1,26 +1,29 @@
 package com.hermes.application.states;
 
-import com.hermes.application.ConsoleView;
+import com.hermes.userinterface.ConsoleView;
 import com.hermes.domain.users.AbstractUser;
 import com.hermes.userinterface.Controller;
 
-/**
- * Created by ivan on 31.10.16.
- */
 public abstract class AbstractUserState extends AbstractState {
 
     private AbstractUser currentUser;
 
-    AbstractUserState(AbstractUser currentUser) {
-        this.currentUser = currentUser;
+    AbstractUserState() {
     }
 
     AbstractUser getCurrentUser() {
+        if(currentUser == null){
+            throw new IllegalStateException("User was not set");
+        }
         return currentUser;
     }
 
+    void setCurrentUser(AbstractUser currentUser) {
+        this.currentUser = currentUser;
+    }
+
     //Template method pattern
-    final void analyseCommandsUser(Controller controller, String[] command){
+    final void analyseCommandsUserCommon(Controller controller, String[] command){
 
         switch(command.length){
             case 1:
@@ -49,7 +52,7 @@ public abstract class AbstractUserState extends AbstractState {
     }
 
     void exitCurrentState(Controller controller){
-        controller.setState(StartState.getInstance());
+        controller.setStartState();
     }
 
     boolean isAbort(String line){

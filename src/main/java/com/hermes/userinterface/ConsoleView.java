@@ -1,4 +1,4 @@
-package com.hermes.application;
+package com.hermes.userinterface;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -7,8 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ConsoleView {
-    private PrintStream ps = null;
-    private Scanner sc = null;
+
+    private final PrintStream ps;
+    private final Scanner sc;
 
     public ConsoleView(InputStream in, PrintStream ps) {
         this.ps = ps;

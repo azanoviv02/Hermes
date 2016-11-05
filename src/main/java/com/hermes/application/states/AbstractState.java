@@ -1,6 +1,6 @@
 package com.hermes.application.states;
 
-import com.hermes.application.ConsoleView;
+import com.hermes.userinterface.ConsoleView;
 import com.hermes.userinterface.Controller;
 
 public abstract class AbstractState {

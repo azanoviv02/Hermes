@@ -1,39 +1,43 @@
 package com.hermes.userinterface;
 
-import com.hermes.application.ConsoleView;
 import com.hermes.application.states.AbstractState;
 import com.hermes.application.states.StartState;
 
 public class Controller {
 
-    private ConsoleView consoleView;
-    private AbstractState state;
+    private final ConsoleView consoleView;
+    private final StartState startState;
+    private AbstractState currentState;
 
-    public Controller() {
-        this.consoleView = new ConsoleView(System.in, System.out);
-        this.state = StartState.getInstance();
+    public Controller(ConsoleView consoleView, StartState startState) {
+        this.consoleView = consoleView;
+        this.startState = startState;
+        this.currentState = startState;
     }
 
     public ConsoleView getConsoleView() {
         return consoleView;
     }
 
-    public AbstractState getState() {
-        return state;
+    public void setStartState() {
+        this.currentState = this.startState;
     }
 
-    public void setState(AbstractState state) {
-        this.state = state;
+    public AbstractState getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(AbstractState currentState) {
+        this.currentState = currentState;
     }
 
     public void parseCommand() {
-        this.state.analyseCommands(this);
+        this.currentState.analyseCommands(this);
     }
 
-    public static void main(String[] args) {
-        Controller cntr = new Controller();
+    void launch() {
         while (true) {
-            cntr.parseCommand();
+            parseCommand();
         }
     }
 }

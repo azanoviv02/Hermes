@@ -1,7 +1,7 @@
 package com.hermes.application.states;
 
 import com.hermes.domain.users.InvalidPasswordException;
-import com.hermes.application.ConsoleView;
+import com.hermes.userinterface.ConsoleView;
 import com.hermes.userinterface.Controller;
 
 /**
@@ -9,13 +9,10 @@ import com.hermes.userinterface.Controller;
  */
 public class StartState extends AbstractState {
 
-    private StartState() {
-    }
+    private final UserStateFactory userStateFactory;
 
-    private static StartState instance = new StartState();
-
-    public static StartState getInstance() {
-        return instance;
+    public StartState(UserStateFactory userStateFactory) {
+        this.userStateFactory = userStateFactory;
     }
 
     public void analyseCommands(Controller controller) {
@@ -52,8 +49,8 @@ public class StartState extends AbstractState {
         String password = consoleView.readPassword();
 
         try{
-            AbstractUserState newState = UserStateFactory.createUserState(login, password);
-            controller.setState(newState);
+            AbstractUserState newState = this.userStateFactory.createUserState(login, password);
+            controller.setCurrentState(newState);
         }catch(InvalidPasswordException e){
             consoleView.println("Error: incorrect password");
         }catch (NoSuchLoginException e){

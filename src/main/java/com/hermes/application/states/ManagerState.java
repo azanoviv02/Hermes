@@ -1,12 +1,10 @@
 package com.hermes.application.states;
 
-import com.hermes.application.ConsoleView;
 import com.hermes.domain.orders.AbstractOrder;
 import com.hermes.domain.orders.OrderBuilder;
-import com.hermes.domain.users.AbstractUser;
-import com.hermes.infrastructure.dataaccess.repositories.Repositories;
+import com.hermes.infrastructure.dataaccess.repositories.OrderRepository;
+import com.hermes.userinterface.ConsoleView;
 import com.hermes.userinterface.Controller;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -16,8 +14,10 @@ import java.util.List;
  */
 public class ManagerState extends AbstractUserState {
 
-    ManagerState(AbstractUser currentUser) {
-        super(currentUser);
+    private final OrderRepository orderRepository;
+
+    public ManagerState(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
     }
 
     public void analyseCommands(Controller controller){
@@ -38,7 +38,7 @@ public class ManagerState extends AbstractUserState {
             printAllOrdersWithCargo(controller);
         }
 
-        analyseCommandsUser(controller, command);
+        analyseCommandsUserCommon(controller, command);
     }
 
     void printHelp(Controller controller){
@@ -54,10 +54,7 @@ public class ManagerState extends AbstractUserState {
 
         consoleView.println("All currently active orders:");
 
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-        Repositories repository = context.getBean(Repositories.class);
-
-        List<? extends AbstractOrder> allOrders = repository.getOrderRepository().getAll();
+        List<? extends AbstractOrder> allOrders = this.orderRepository.getAll();
         for(AbstractOrder order : allOrders){
             printOrderInfo(controller, order);
         }
@@ -68,7 +65,7 @@ public class ManagerState extends AbstractUserState {
 
         consoleView.println("Not ready yet!");
 //        consoleView.println("All currently active orders:");
-//        List<? extends Order> allOrders = repository.getOrderRepository().getAll();
+//        List<? extends Order> allOrders = this.orderRepository().getAll();
 //        for(Order order : allOrders){
 //            printOrderInfo(controller, order);
 //        }
@@ -124,10 +121,7 @@ public class ManagerState extends AbstractUserState {
             }
         }
 
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-        Repositories repository = context.getBean(Repositories.class);
-
-        repository.getOrderRepository().add(ob.getOrder());
+        this.orderRepository.add(ob.getOrder());
         consoleView.println("New order was successfuly added!");
     }
 

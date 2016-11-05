@@ -9,8 +9,12 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("BASIC_TRUCK")
 public class BasicTruck extends AbstractSolidTruck {
-    protected static double MAX_WEIGHT = 1000.0;
-    protected static double MAX_VOLUME = 5000.0;
+    private static double MAX_WEIGHT = 1000.0;
+    private static double MAX_VOLUME = 5000.0;
+
+    public BasicTruck() {
+        super();
+    }
 
     public double getMaxWeight() {
         return MAX_WEIGHT;
@@ -18,9 +22,5 @@ public class BasicTruck extends AbstractSolidTruck {
 
     public double getMaxVolume() {
         return MAX_VOLUME;
-    }
-
-    public BasicTruck() {
-        super();
     }
 }

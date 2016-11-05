@@ -2,8 +2,7 @@ package com.hermes.application.states;
 
 import com.hermes.domain.employees.AbstractDriver;
 import com.hermes.domain.employees.AbstractEmployee;
-import com.hermes.domain.users.RepresentedUser;
-import com.hermes.application.ConsoleView;
+import com.hermes.userinterface.ConsoleView;
 import com.hermes.userinterface.Controller;
 
 /**
@@ -11,8 +10,7 @@ import com.hermes.userinterface.Controller;
  */
 public class DriverState extends AbstractRepresentedUserState {
 
-    DriverState(RepresentedUser currentUser) {
-        super(currentUser);
+    DriverState() {
     }
 
     public void analyseCommands(Controller controller){

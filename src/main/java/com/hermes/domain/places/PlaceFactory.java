@@ -3,16 +3,10 @@ package com.hermes.domain.places;
 /**
  * Created by ivan on 02.11.16.
  */
-public class PlaceFactory {
-    public static BasicCompanyBase createBasicCompanyBase(String name){
-        return new BasicCompanyBase(name);
-    }
+public interface PlaceFactory {
+    BasicCompanyBase createBasicCompanyBase(String name);
 
-    public static BasicClientBase createBasicClientBase(String name){
-        return new BasicClientBase(name);
-    }
+    BasicClientBase createBasicClientBase(String name);
 
-    public static BasicFix createBasicFix(String name){
-        return new BasicFix(name);
-    }
+    BasicFix createBasicFix(String name);
 }

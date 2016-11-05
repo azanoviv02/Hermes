@@ -3,9 +3,8 @@ package com.hermes.application.states;
 import com.hermes.domain.users.AbstractUser;
 import com.hermes.domain.users.InvalidPasswordException;
 import com.hermes.domain.users.RepresentedUser;
-import com.hermes.infrastructure.dataaccess.repositories.Repositories;
+import com.hermes.infrastructure.dataaccess.repositories.UserRepository;
 import com.hermes.infrastructure.dataaccess.specifications.users.UserWhich;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.persistence.NoResultException;
 
@@ -14,29 +13,56 @@ import javax.persistence.NoResultException;
  */
 class UserStateFactory {
 
-    static AbstractUserState createUserState(String login, String password) throws NoSuchLoginException, InvalidPasswordException{
+    private final UserRepository userRepository;
+
+    private final AdminState adminState;
+    private final DriverState driverState;
+    private final ManagerState managerState;
+    private final InformerState informerState;
+    private final PlannerState plannerState;
+
+    private final UserWhich userWhich;
+
+    public UserStateFactory(UserRepository userRepository,
+                            AdminState adminState,
+                            DriverState driverState,
+                            ManagerState managerState,
+                            InformerState informerState,
+                            PlannerState plannerState,
+                            UserWhich userWhich) {
+        this.userRepository = userRepository;
+        this.adminState = adminState;
+        this.driverState = driverState;
+        this.managerState = managerState;
+        this.informerState = informerState;
+        this.plannerState = plannerState;
+        this.userWhich = userWhich;
+    }
+
+    AbstractUserState createUserState(String login, String password) throws NoSuchLoginException, InvalidPasswordException{
         try {
-
-            ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-            Repositories repository = context.getBean(Repositories.class);
-
-            AbstractUser user = repository.getUserRepository().getOne(UserWhich.hasLogin(login));
+            AbstractUser user = userRepository.getOne(userWhich.hasLogin(login));
             user.checkPassword(password);
             switch(user.getRole()){
                 case ADMIN:
-                    return new AdminState(user);
+                    adminState.setCurrentUser(user);
+                    return adminState;
                 case DRIVER:
                     if(user instanceof RepresentedUser){
-                        return new DriverState((RepresentedUser) user);
+                        driverState.setCurrentUser(user);
+                        return driverState;
                     }else{
                         throw new IllegalStateException();
                     }
                 case MANAGER:
-                    return new ManagerState(user);
+                    managerState.setCurrentUser(user);
+                    return managerState;
                 case PLANNER:
-                    return new PlannerState(user);
+                    plannerState.setCurrentUser(user);
+                    return plannerState;
                 case INFORMER:
-                    return new InformerState(user);
+                    informerState.setCurrentUser(user);
+                    return informerState;
                 default:
                     throw new IllegalStateException();
             }

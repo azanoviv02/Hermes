@@ -60,7 +60,7 @@ public abstract class AbstractUser extends AbstractPersistentObject {
     }
 
     public void checkPassword(String password) throws InvalidPasswordException{
-        if(this.password != password){
+        if(this.getPassword().equals(password) == false){
             throw new InvalidPasswordException();
         }
     }

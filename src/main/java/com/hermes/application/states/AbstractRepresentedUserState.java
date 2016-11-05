@@ -1,6 +1,6 @@
 package com.hermes.application.states;
 
-import com.hermes.application.ConsoleView;
+import com.hermes.userinterface.ConsoleView;
 import com.hermes.domain.users.AbstractUser;
 import com.hermes.domain.users.RepresentedUser;
 import com.hermes.userinterface.Controller;
@@ -9,8 +9,7 @@ import com.hermes.userinterface.Controller;
  * Created by ivan on 02.11.16.
  */
 public abstract class AbstractRepresentedUserState extends AbstractUserState {
-    public AbstractRepresentedUserState(RepresentedUser currentUser) {
-        super(currentUser);
+    public AbstractRepresentedUserState() {
     }
 
     RepresentedUser getCurrentUser() {
@@ -20,6 +19,10 @@ public abstract class AbstractRepresentedUserState extends AbstractUserState {
         }else{
             throw new IllegalStateException();
         }
+    }
+
+    void setCurrentUser(RepresentedUser currentUser) {
+        super.setCurrentUser(currentUser);
     }
 
     final void analyseCommandsRepresented(Controller controller, String[] command){
@@ -35,7 +38,7 @@ public abstract class AbstractRepresentedUserState extends AbstractUserState {
                 }
         }
 
-        analyseCommandsUser(controller, command);
+        analyseCommandsUserCommon(controller, command);
     }
 
     void printHelp(Controller controller){
