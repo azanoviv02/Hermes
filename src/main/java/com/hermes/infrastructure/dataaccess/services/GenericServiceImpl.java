@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-public abstract class GenericServiceImpl<T extends AbstractPersistentObject> implements GenericService<T>{
+public class GenericServiceImpl<T extends AbstractPersistentObject> implements GenericService<T>{
 
     private final GenericRepository<T> repository;
 

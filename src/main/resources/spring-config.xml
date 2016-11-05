@@ -99,17 +99,10 @@
         <constructor-arg ref="sessionFactory"/>
     </bean>
 
-    <bean id="genericService"
-          abstract="true"
-          class="com.hermes.infrastructure.dataaccess.services.GenericServiceImpl">
-    </bean>
-
     <bean id="cargoService"
-          class="com.hermes.infrastructure.dataaccess.services.CargoServiceImpl"
-          parent="genericService">
+          class="com.hermes.infrastructure.dataaccess.services.CargoServiceImpl">
         <constructor-arg>
-            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
-                  parent="genericRepository">
+            <bean parent="genericRepository">
                 <constructor-arg type = "java.lang.Class">
                     <value>com.hermes.domain.cargo.AbstractCargo</value>
                 </constructor-arg>
@@ -118,11 +111,9 @@
     </bean>
 
     <bean id="orderService"
-          class="com.hermes.infrastructure.dataaccess.services.OrderServiceImpl"
-          parent="genericService">
+          class="com.hermes.infrastructure.dataaccess.services.OrderServiceImpl">
         <constructor-arg>
-            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
-                  parent="genericRepository">
+            <bean parent="genericRepository">
                 <constructor-arg type = "java.lang.Class">
                     <value>com.hermes.domain.orders.AbstractOrder</value>
                 </constructor-arg>
@@ -131,11 +122,9 @@
     </bean>
 
     <bean id="haulService"
-          class="com.hermes.infrastructure.dataaccess.services.HaulServiceImpl"
-          parent="genericService">
+          class="com.hermes.infrastructure.dataaccess.services.HaulServiceImpl">
         <constructor-arg>
-            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
-                  parent="genericRepository">
+            <bean parent="genericRepository">
                 <constructor-arg type = "java.lang.Class">
                     <value>com.hermes.domain.hauls.AbstractHaul</value>
                 </constructor-arg>
@@ -144,11 +133,9 @@
     </bean>
 
     <bean id="employeeService"
-          class="com.hermes.infrastructure.dataaccess.services.EmployeeServiceImpl"
-          parent="genericService">
+          class="com.hermes.infrastructure.dataaccess.services.EmployeeServiceImpl">
         <constructor-arg>
-            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
-                  parent="genericRepository">
+            <bean parent="genericRepository">
                 <constructor-arg type = "java.lang.Class">
                     <value>com.hermes.domain.employees.AbstractEmployee</value>
                 </constructor-arg>
@@ -157,11 +144,9 @@
     </bean>
 
     <bean id="vehicleService"
-          class="com.hermes.infrastructure.dataaccess.services.VehicleServiceImpl"
-          parent="genericService">
+          class="com.hermes.infrastructure.dataaccess.services.VehicleServiceImpl">
         <constructor-arg>
-            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
-                  parent="genericRepository">
+            <bean parent="genericRepository">
                 <constructor-arg type = "java.lang.Class">
                     <value>com.hermes.domain.vehicles.AbstractVehicle</value>
                 </constructor-arg>
@@ -170,11 +155,9 @@
     </bean>
 
     <bean id="milestoneService"
-          class="com.hermes.infrastructure.dataaccess.services.MilestoneServiceImpl"
-          parent="genericService">
+          class="com.hermes.infrastructure.dataaccess.services.MilestoneServiceImpl">
         <constructor-arg>
-            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
-                  parent="genericRepository">
+            <bean parent="genericRepository">
                 <constructor-arg type = "java.lang.Class">
                     <value>com.hermes.domain.milestones.AbstractMilestone</value>
                 </constructor-arg>
@@ -183,11 +166,9 @@
     </bean>
 
     <bean id="placeService"
-          class="com.hermes.infrastructure.dataaccess.services.PlaceServiceImpl"
-          parent="genericService">
+          class="com.hermes.infrastructure.dataaccess.services.PlaceServiceImpl">
         <constructor-arg>
-            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
-                  parent="genericRepository">
+            <bean parent="genericRepository">
                 <constructor-arg type = "java.lang.Class">
                     <value>com.hermes.domain.places.AbstractPlace</value>
                 </constructor-arg>
@@ -196,11 +177,9 @@
     </bean>
 
     <bean id="userService"
-          class="com.hermes.infrastructure.dataaccess.services.UserServiceImpl"
-          parent="genericService">
+          class="com.hermes.infrastructure.dataaccess.services.UserServiceImpl">
         <constructor-arg>
-            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
-                  parent="genericRepository">
+            <bean parent="genericRepository">
                 <constructor-arg type = "java.lang.Class">
                     <value>com.hermes.domain.users.AbstractUser</value>
                 </constructor-arg>
