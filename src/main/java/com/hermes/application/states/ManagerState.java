@@ -2,7 +2,7 @@ package com.hermes.application.states;
 
 import com.hermes.domain.orders.AbstractOrder;
 import com.hermes.domain.orders.OrderBuilder;
-import com.hermes.infrastructure.dataaccess.repositories.OrderRepository;
+import com.hermes.infrastructure.dataaccess.services.OrderService;
 import com.hermes.userinterface.ConsoleView;
 import com.hermes.userinterface.Controller;
 
@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class ManagerState extends AbstractUserState {
 
-    private final OrderRepository orderRepository;
+    private final OrderService orderService;
 
-    public ManagerState(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
+    public ManagerState(OrderService orderService) {
+        this.orderService = orderService;
     }
 
     public void analyseCommands(Controller controller){
@@ -54,7 +54,7 @@ public class ManagerState extends AbstractUserState {
 
         consoleView.println("All currently active orders:");
 
-        List<? extends AbstractOrder> allOrders = this.orderRepository.getAll();
+        List<? extends AbstractOrder> allOrders = this.orderService.getAll();
         for(AbstractOrder order : allOrders){
             printOrderInfo(controller, order);
         }
@@ -65,7 +65,7 @@ public class ManagerState extends AbstractUserState {
 
         consoleView.println("Not ready yet!");
 //        consoleView.println("All currently active orders:");
-//        List<? extends Order> allOrders = this.orderRepository().getAll();
+//        List<? extends Order> allOrders = this.orderService().getAll();
 //        for(Order order : allOrders){
 //            printOrderInfo(controller, order);
 //        }
@@ -121,7 +121,7 @@ public class ManagerState extends AbstractUserState {
             }
         }
 
-        this.orderRepository.add(ob.getOrder());
+        this.orderService.add(ob.getOrder());
         consoleView.println("New order was successfuly added!");
     }
 

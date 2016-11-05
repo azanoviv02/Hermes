@@ -1,4 +1,4 @@
-package com.hermes.infrastructure.dataaccess.repositories;
+package com.hermes.infrastructure.dataaccess.services;
 
 import com.hermes.domain.AbstractPersistentObject;
 import com.hermes.infrastructure.dataaccess.specifications.Specification;
@@ -6,7 +6,7 @@ import com.hermes.infrastructure.dataaccess.specifications.Specification;
 import java.util.List;
 import java.util.UUID;
 
-public interface GenericDao<T extends AbstractPersistentObject> {
+public interface GenericRepository<T extends AbstractPersistentObject> {
 
     public void add(T entity) ;
 

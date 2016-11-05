@@ -1,4 +1,4 @@
-package com.hermes.infrastructure.dataaccess.repositories;
+package com.hermes.infrastructure.dataaccess.services;
 
 import com.hermes.domain.AbstractPersistentObject;
 import com.hermes.infrastructure.dataaccess.specifications.Specification;
@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * Created by ivan on 04.11.16.
  */
-public interface GenericRepository<T extends AbstractPersistentObject> {
+public interface GenericService<T extends AbstractPersistentObject> {
 
     @Transactional(propagation = Propagation.REQUIRED)
     void add(T entity);

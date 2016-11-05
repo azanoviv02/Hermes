@@ -1,4 +1,4 @@
-package com.hermes.infrastructure.dataaccess.repositories;
+package com.hermes.infrastructure.dataaccess.services;
 
 import com.hermes.domain.AbstractPersistentObject;
 import com.hermes.infrastructure.dataaccess.specifications.Specification;
@@ -9,13 +9,13 @@ import org.hibernate.SessionFactory;
 import java.util.List;
 import java.util.UUID;
 
-public class GenericDaoImpl<T extends AbstractPersistentObject> implements GenericDao<T> {
+public class GenericRepositoryImpl<T extends AbstractPersistentObject> implements GenericRepository<T> {
 
-    protected final Class<? extends T> daoType;
+    protected final Class<? extends T> repositoryType;
     private final SessionFactory sessionFactory;
 
-    public GenericDaoImpl(Class<? extends T> daoType, SessionFactory sessionFactory) {
-        this.daoType = daoType;
+    public GenericRepositoryImpl(Class<? extends T> repositoryType, SessionFactory sessionFactory) {
+        this.repositoryType = repositoryType;
         this.sessionFactory = sessionFactory;
     }
 
@@ -45,7 +45,7 @@ public class GenericDaoImpl<T extends AbstractPersistentObject> implements Gener
 
     @Override
     public T find(UUID key) {
-        return (T) currentSession().get(daoType, key);
+        return (T) currentSession().get(repositoryType, key);
     }
 
     @Override
@@ -59,6 +59,6 @@ public class GenericDaoImpl<T extends AbstractPersistentObject> implements Gener
 
     @Override
     public List<T> getAll() {
-        return currentSession().createCriteria(daoType).list();
+        return currentSession().createCriteria(repositoryType).list();
     }
 }

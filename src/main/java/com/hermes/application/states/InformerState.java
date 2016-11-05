@@ -3,7 +3,7 @@ package com.hermes.application.states;
 import com.hermes.domain.places.AbstractBase;
 import com.hermes.domain.places.AbstractPlace;
 import com.hermes.domain.places.PlaceFactory;
-import com.hermes.infrastructure.dataaccess.repositories.PlaceRepository;
+import com.hermes.infrastructure.dataaccess.services.PlaceService;
 import com.hermes.userinterface.ConsoleView;
 import com.hermes.userinterface.Controller;
 
@@ -12,11 +12,11 @@ import com.hermes.userinterface.Controller;
  */
 public class InformerState extends AbstractUserState {
 
-    private final PlaceRepository placeRepository;
+    private final PlaceService placeService;
     private final PlaceFactory placeFactory;
 
-    public InformerState(PlaceRepository placeRepository, PlaceFactory placeFactory) {
-        this.placeRepository = placeRepository;
+    public InformerState(PlaceService placeService, PlaceFactory placeFactory) {
+        this.placeService = placeService;
         this.placeFactory = placeFactory;
     }
 
@@ -80,7 +80,7 @@ public class InformerState extends AbstractUserState {
             }
         }
 
-        this.placeRepository.add(place);
+        this.placeService.add(place);
         consoleView.println("New place was created successfuly");
     }
 

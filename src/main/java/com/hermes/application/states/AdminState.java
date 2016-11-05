@@ -3,7 +3,7 @@ package com.hermes.application.states;
 import com.hermes.domain.users.AbstractUser;
 import com.hermes.domain.users.Role;
 import com.hermes.domain.users.UserFactory;
-import com.hermes.infrastructure.dataaccess.repositories.UserRepository;
+import com.hermes.infrastructure.dataaccess.services.UserService;
 import com.hermes.infrastructure.dataaccess.specifications.users.UserWhich;
 import com.hermes.userinterface.ConsoleView;
 import com.hermes.userinterface.Controller;
@@ -12,12 +12,12 @@ import java.util.List;
 
 public class AdminState extends AbstractUserState {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
     private final UserFactory userFactory;
     private final UserWhich userWhich;
 
-    public AdminState(UserRepository userRepository, UserFactory userFactory, UserWhich userWhich) {
-        this.userRepository = userRepository;
+    public AdminState(UserService userService, UserFactory userFactory, UserWhich userWhich) {
+        this.userService = userService;
         this.userFactory = userFactory;
         this.userWhich = userWhich;
     }
@@ -76,7 +76,7 @@ public class AdminState extends AbstractUserState {
     private void printAllUsers(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allUsers = this.userRepository.getAll();
+        List<? extends AbstractUser> allUsers = this.userService.getAll();
 
         if(allUsers.isEmpty()){
             throw new IllegalStateException("There should be at least one admin account!");
@@ -94,7 +94,7 @@ public class AdminState extends AbstractUserState {
     private void printAllAdmins(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allAdmins = this.userRepository.getEvery(userWhich.isAdmin());
+        List<? extends AbstractUser> allAdmins = this.userService.getEvery(userWhich.isAdmin());
 
         if(allAdmins.isEmpty()){
             throw new IllegalStateException("There should be at least one admin account!");
@@ -112,7 +112,7 @@ public class AdminState extends AbstractUserState {
     private void printAllDrivers(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allDrivers = this.userRepository.getEvery(userWhich.isDriver());
+        List<? extends AbstractUser> allDrivers = this.userService.getEvery(userWhich.isDriver());
 
         if(allDrivers.isEmpty()){
             consoleView.println("No drivers have been registered yet :(");
@@ -127,7 +127,7 @@ public class AdminState extends AbstractUserState {
     private void printAllPlanners(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allPlanners = this.userRepository.getEvery(userWhich.isPlanner());
+        List<? extends AbstractUser> allPlanners = this.userService.getEvery(userWhich.isPlanner());
 
         if(allPlanners.isEmpty()){
             consoleView.println("No drivers have been registered yet :(");
@@ -142,7 +142,7 @@ public class AdminState extends AbstractUserState {
     private void printAllManagers(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allManagers = this.userRepository.getEvery(userWhich.isManager());
+        List<? extends AbstractUser> allManagers = this.userService.getEvery(userWhich.isManager());
 
         if(allManagers.isEmpty()){
             consoleView.println("No managers have been registered yet :(");
@@ -157,7 +157,7 @@ public class AdminState extends AbstractUserState {
     private void printAllInformers(Controller controller){
         ConsoleView consoleView = controller.getConsoleView();
 
-        List<? extends AbstractUser> allInformers = this.userRepository.getEvery(userWhich.isInformer());
+        List<? extends AbstractUser> allInformers = this.userService.getEvery(userWhich.isInformer());
 
         if(allInformers.isEmpty()){
             consoleView.println("No informers have been registered yet :(");
@@ -214,7 +214,7 @@ public class AdminState extends AbstractUserState {
             }
         }
 
-        List<? extends AbstractUser> allUsers = this.userRepository.getAll();
+        List<? extends AbstractUser> allUsers = this.userService.getAll();
 
         outer:
         while(true){
@@ -247,7 +247,7 @@ public class AdminState extends AbstractUserState {
             throw new IllegalStateException();
         }
 
-        this.userRepository.add(this.userFactory.createUser(login, password, name, role));
+        this.userService.add(this.userFactory.createUser(login, password, name, role));
         consoleView.println("New user was successfully created!");
     }
 

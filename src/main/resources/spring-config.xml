@@ -72,98 +72,139 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        <tx:attributes>
-            <tx:method name="get*" read-only="true" />
-            <tx:method name="contains*" read-only="true" />
-            <tx:method name="*" />
-        </tx:attributes>
-    </tx:advice>
+    <tx:annotation-driven />
 
-    <aop:config>
-        <aop:pointcut id="userServicePointCut"
-                      expression="execution(* com.hermes.infrastructure.dataaccess.repositories.*Repository.*(..))" />
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="userServicePointCut" />
-    </aop:config>
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="get*" read-only="true" />-->
+            <!--<tx:method name="contains*" read-only="true" />-->
+            <!--<tx:method name="*" />-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="userServicePointCut"-->
+                      <!--expression="execution(* com.hermes.infrastructure.dataaccess.services.*Service.*(..))" />-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="userServicePointCut" />-->
+    <!--</aop:config>-->
 
     <bean id="persistenceExceptionTranslationPostProcessor"
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
     <!-- //////////////////////////////////////////////////////////////////////////////////// -->
 
-    <!-- <bean id="genericDao"
-          abstract="true"
-          class="com.hermes.infrastructure.dataaccess.repositories.GenericDao">
-        <constructor-arg ref="sessionFactory"/>
-    </bean> -->
-
     <bean id="genericRepository"
           abstract="true"
-          class="com.hermes.infrastructure.dataaccess.repositories.GenericRepositoryImpl">
+          class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl">
         <constructor-arg ref="sessionFactory"/>
     </bean>
 
-    <bean id="cargoRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.CargoRepositoryImpl"
-          parent="genericRepository">
-        <constructor-arg type = "java.lang.Class">
-            <value>com.hermes.domain.cargo.AbstractCargo</value>
+    <bean id="genericService"
+          abstract="true"
+          class="com.hermes.infrastructure.dataaccess.services.GenericServiceImpl">
+    </bean>
+
+    <bean id="cargoService"
+          class="com.hermes.infrastructure.dataaccess.services.CargoServiceImpl"
+          parent="genericService">
+        <constructor-arg>
+            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
+                  parent="genericRepository">
+                <constructor-arg type = "java.lang.Class">
+                    <value>com.hermes.domain.cargo.AbstractCargo</value>
+                </constructor-arg>
+            </bean>
         </constructor-arg>
     </bean>
 
-    <bean id="orderRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.OrderRepositoryImpl"
-          parent="genericRepository">
-        <constructor-arg type = "java.lang.Class">
-            <value>com.hermes.domain.orders.AbstractOrder</value>
+    <bean id="orderService"
+          class="com.hermes.infrastructure.dataaccess.services.OrderServiceImpl"
+          parent="genericService">
+        <constructor-arg>
+            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
+                  parent="genericRepository">
+                <constructor-arg type = "java.lang.Class">
+                    <value>com.hermes.domain.orders.AbstractOrder</value>
+                </constructor-arg>
+            </bean>
         </constructor-arg>
     </bean>
 
-    <bean id="haulRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.HaulRepositoryImpl"
-          parent="genericRepository">
-        <constructor-arg type = "java.lang.Class">
-            <value>com.hermes.domain.hauls.AbstractHaul</value>
+    <bean id="haulService"
+          class="com.hermes.infrastructure.dataaccess.services.HaulServiceImpl"
+          parent="genericService">
+        <constructor-arg>
+            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
+                  parent="genericRepository">
+                <constructor-arg type = "java.lang.Class">
+                    <value>com.hermes.domain.hauls.AbstractHaul</value>
+                </constructor-arg>
+            </bean>
         </constructor-arg>
     </bean>
 
-    <bean id="employeeRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.EmployeeRepositoryImpl"
-          parent="genericRepository">
-        <constructor-arg type = "java.lang.Class">
-            <value>com.hermes.domain.employees.AbstractEmployee</value>
+    <bean id="employeeService"
+          class="com.hermes.infrastructure.dataaccess.services.EmployeeServiceImpl"
+          parent="genericService">
+        <constructor-arg>
+            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
+                  parent="genericRepository">
+                <constructor-arg type = "java.lang.Class">
+                    <value>com.hermes.domain.employees.AbstractEmployee</value>
+                </constructor-arg>
+            </bean>
         </constructor-arg>
     </bean>
 
-    <bean id="vehicleRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.VehicleRepositoryImpl"
-          parent="genericRepository">
-        <constructor-arg type = "java.lang.Class">
-            <value>com.hermes.domain.vehicles.AbstractVehicle</value>
+    <bean id="vehicleService"
+          class="com.hermes.infrastructure.dataaccess.services.VehicleServiceImpl"
+          parent="genericService">
+        <constructor-arg>
+            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
+                  parent="genericRepository">
+                <constructor-arg type = "java.lang.Class">
+                    <value>com.hermes.domain.vehicles.AbstractVehicle</value>
+                </constructor-arg>
+            </bean>
         </constructor-arg>
     </bean>
 
-    <bean id="milestoneRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.MilestoneRepositoryImpl"
-          parent="genericRepository">
-        <constructor-arg type = "java.lang.Class">
-            <value>com.hermes.domain.milestones.AbstractMilestone</value>
+    <bean id="milestoneService"
+          class="com.hermes.infrastructure.dataaccess.services.MilestoneServiceImpl"
+          parent="genericService">
+        <constructor-arg>
+            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
+                  parent="genericRepository">
+                <constructor-arg type = "java.lang.Class">
+                    <value>com.hermes.domain.milestones.AbstractMilestone</value>
+                </constructor-arg>
+            </bean>
         </constructor-arg>
     </bean>
 
-    <bean id="placeRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.PlaceRepositoryImpl"
-          parent="genericRepository">
-        <constructor-arg type = "java.lang.Class">
-            <value>com.hermes.domain.places.AbstractPlace</value>
+    <bean id="placeService"
+          class="com.hermes.infrastructure.dataaccess.services.PlaceServiceImpl"
+          parent="genericService">
+        <constructor-arg>
+            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
+                  parent="genericRepository">
+                <constructor-arg type = "java.lang.Class">
+                    <value>com.hermes.domain.places.AbstractPlace</value>
+                </constructor-arg>
+            </bean>
         </constructor-arg>
     </bean>
 
-    <bean id="userRepository"
-          class="com.hermes.infrastructure.dataaccess.repositories.UserRepositoryImpl"
-          parent="genericRepository">
-        <constructor-arg type = "java.lang.Class">
-            <value>com.hermes.domain.users.AbstractUser</value>
+    <bean id="userService"
+          class="com.hermes.infrastructure.dataaccess.services.UserServiceImpl"
+          parent="genericService">
+        <constructor-arg>
+            <bean class="com.hermes.infrastructure.dataaccess.services.GenericRepositoryImpl"
+                  parent="genericRepository">
+                <constructor-arg type = "java.lang.Class">
+                    <value>com.hermes.domain.users.AbstractUser</value>
+                </constructor-arg>
+            </bean>
         </constructor-arg>
     </bean>
 
@@ -196,7 +237,7 @@
 
     <bean id="adminState"
           class="com.hermes.application.states.AdminState">
-        <constructor-arg ref="userRepository"/>
+        <constructor-arg ref="userService"/>
         <constructor-arg ref="userFactory"/>
         <constructor-arg ref="userWhich"/>
     </bean>
@@ -207,14 +248,14 @@
 
     <bean id="informerState"
           class="com.hermes.application.states.InformerState">
-        <constructor-arg ref="placeRepository"/>
+        <constructor-arg ref="placeService"/>
         <constructor-arg ref="placeFactory"/>
     </bean>
 
 
     <bean id="managerState"
           class="com.hermes.application.states.ManagerState">
-        <constructor-arg ref="orderRepository"/>
+        <constructor-arg ref="orderService"/>
     </bean>
 
     <bean id="plannerState"
@@ -225,7 +266,7 @@
 
     <bean id="userStateFactory"
           class="com.hermes.application.states.UserStateFactory">
-        <constructor-arg ref="userRepository"/>
+        <constructor-arg ref="userService"/>
         <constructor-arg ref="adminState"/>
         <constructor-arg ref="driverState"/>
         <constructor-arg ref="managerState"/>

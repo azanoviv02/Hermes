@@ -3,7 +3,7 @@ package com.hermes.application.states;
 import com.hermes.domain.users.AbstractUser;
 import com.hermes.domain.users.InvalidPasswordException;
 import com.hermes.domain.users.RepresentedUser;
-import com.hermes.infrastructure.dataaccess.repositories.UserRepository;
+import com.hermes.infrastructure.dataaccess.services.UserService;
 import com.hermes.infrastructure.dataaccess.specifications.users.UserWhich;
 
 import javax.persistence.NoResultException;
@@ -13,7 +13,7 @@ import javax.persistence.NoResultException;
  */
 class UserStateFactory {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     private final AdminState adminState;
     private final DriverState driverState;
@@ -23,14 +23,14 @@ class UserStateFactory {
 
     private final UserWhich userWhich;
 
-    public UserStateFactory(UserRepository userRepository,
+    public UserStateFactory(UserService userService,
                             AdminState adminState,
                             DriverState driverState,
                             ManagerState managerState,
                             InformerState informerState,
                             PlannerState plannerState,
                             UserWhich userWhich) {
-        this.userRepository = userRepository;
+        this.userService = userService;
         this.adminState = adminState;
         this.driverState = driverState;
         this.managerState = managerState;
@@ -41,7 +41,7 @@ class UserStateFactory {
 
     AbstractUserState createUserState(String login, String password) throws NoSuchLoginException, InvalidPasswordException{
         try {
-            AbstractUser user = userRepository.getOne(userWhich.hasLogin(login));
+            AbstractUser user = userService.getOne(userWhich.hasLogin(login));
             user.checkPassword(password);
             switch(user.getRole()){
                 case ADMIN:

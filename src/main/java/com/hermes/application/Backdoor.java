@@ -2,20 +2,20 @@ package com.hermes.application;
 
 import com.hermes.domain.users.Role;
 import com.hermes.domain.users.UserFactory;
-import com.hermes.infrastructure.dataaccess.repositories.UserRepository;
+import com.hermes.infrastructure.dataaccess.services.UserService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Backdoor {
 
     public static void main(String[] args){
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-        UserRepository userRepository = context.getBean(UserRepository.class);
+        UserService userService = context.getBean(UserService.class);
         UserFactory userFactory = context.getBean(UserFactory.class);
 
-        userRepository.add(userFactory.createUser("Dudkin", "123", "Pavel Dudkin", Role.ADMIN));
-        userRepository.add(userFactory.createUser("Gurbatov", "123", "Pavel Gurbatov", Role.DRIVER));
-        userRepository.add(userFactory.createUser("Kireev", "123", "Pavel Kireev", Role.MANAGER));
-        userRepository.add(userFactory.createUser("FYL", "123", "Pavel Fyl", Role.PLANNER));
-        userRepository.add(userFactory.createUser("Azanov", "123", "Pavel Fyl", Role.INFORMER));
+        userService.add(userFactory.createUser("Dudkin", "123", "Pavel Dudkin", Role.ADMIN));
+        userService.add(userFactory.createUser("Gurbatov", "123", "Pavel Gurbatov", Role.DRIVER));
+        userService.add(userFactory.createUser("Kireev", "123", "Pavel Kireev", Role.MANAGER));
+        userService.add(userFactory.createUser("FYL", "123", "Pavel Fyl", Role.PLANNER));
+        userService.add(userFactory.createUser("Azanov", "123", "Pavel Fyl", Role.INFORMER));
     }
 }
